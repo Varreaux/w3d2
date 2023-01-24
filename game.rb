@@ -12,5 +12,20 @@ class Game
   end
 
 
+  def play
+    while !won?
+      @board.render
+        puts "Guess the position "
+        current_guess = gets.chomp.split.map(&:to_i)
+        guessed_pos(current_guess)
+
+
+
+
+
+    end
+
+
+
 end
 

@@ -57,10 +57,26 @@ class Board
         end
     end
 
+    def won?
+        @grid.flatten.all? {|el| el.face_up}
+    end
+
+    def guessed_pos(pos)
+        if !self[pos].face_up
+            self[pos].reveal
+            return self[pos]
+        end
+    end
+
+
+
+
+
 
 
     
     
+
 
 
 
