@@ -1,3 +1,5 @@
+require_relative "card"
+
 class Board
 
     def initialize(n)
@@ -43,11 +45,16 @@ class Board
         end
 
         characters.each_with_index do |letter, i|
-            self[coordinates[i]] = letter
+            self[coordinates[i]] = Card.new(letter)
         end
 
-        return @grid
-        
+        return @grid        
+    end
+
+    def render
+        @grid.each do |row|
+            puts row.join(" ")
+        end
     end
 
 
@@ -59,19 +66,6 @@ class Board
 
         
  
-
-        # numberofcards.even? ? numberofcards:numberofcards-1 
-
-
-
-
-
-
-
-
-
-
-
 
 
 
