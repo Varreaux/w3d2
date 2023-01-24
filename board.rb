@@ -27,7 +27,7 @@ class Board
             characters << char if !characters.include?(char)
         end
 
-        return characters.concat(characters)
+        return characters.concat(characters).shuffle
     end
 
     def populate
@@ -35,21 +35,30 @@ class Board
         rows = *(0..@grid.length-1)
         cols = *(0..@grid.length-1)
 
-        characters.each do |letter|
-            row = rows.sample
-            col = cols.sample
-            @grid[row][col] = letter if !@grid[row][col]
-
+        coordinates = []
+        rows.each do |i|
+            cols.each do |j|
+                coordinates << [i,j]
+            end
         end
+
+        characters.each_with_index do |letter, i|
+            self[coordinates[i]] = letter
+        end
+
+        return @grid
         
     end
+
+
+
     
     
 
-        
+
 
         
-    end
+ 
 
         # numberofcards.even? ? numberofcards:numberofcards-1 
 
